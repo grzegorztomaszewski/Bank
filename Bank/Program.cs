@@ -30,7 +30,7 @@ namespace Bank
             Console.WriteLine($"Pierwsze konto rozliczeniowe w systemie dodał/a: {fullName2}");
 
             printer.Print(billingAccount);
-            
+             
             Console.ReadKey();
         }
     }
