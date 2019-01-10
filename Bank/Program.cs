@@ -12,11 +12,11 @@ namespace Bank
             Console.WriteLine(author);
             Console.WriteLine();
 
-            SavingsAccount savingsAccount = new SavingsAccount("940000000001", 0.0M, "Marek", "Zając", 92010133333);
+            SavingsAccount savingsAccount = new SavingsAccount(1, "Marek", "Zając", 92010133333);
             
-            SavingsAccount secondSavingsAccount = new SavingsAccount("940000000002", 0.0M, "Marek", "Zając", 92010133333);
+            SavingsAccount secondSavingsAccount = new SavingsAccount(2,"Marek", "Zając", 92010133333);
 
-            Account billingAccount = new BillingAccount("940000000003", 0.0M, "Marek", "Zając", 92010133333);
+            Account billingAccount = new BillingAccount(3, "Marek", "Zając", 92010133333);
 
             string fullName = savingsAccount.GetFullName();
             Console.WriteLine($"Pierwsze konto oszczędnościowe w systemie dodał/a: {fullName}");
