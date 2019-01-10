@@ -16,7 +16,7 @@ namespace Bank
             
             SavingsAccount secondSavingsAccount = new SavingsAccount("940000000002", 0.0M, "Marek", "Zając", 92010133333);
 
-            BillingAccount billingAccount = new BillingAccount("940000000003", 0.0M, "Marek", "Zając", 92010133333);
+            Account billingAccount = new BillingAccount("940000000003", 0.0M, "Marek", "Zając", 92010133333);
 
             string fullName = savingsAccount.GetFullName();
             Console.WriteLine($"Pierwsze konto oszczędnościowe w systemie dodał/a: {fullName}");
@@ -30,7 +30,7 @@ namespace Bank
             Console.WriteLine($"Pierwsze konto rozliczeniowe w systemie dodał/a: {fullName2}");
 
             printer.Print(billingAccount);
-
+            
             Console.ReadKey();
         }
     }
