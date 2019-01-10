@@ -6,30 +6,18 @@ using System.Threading.Tasks;
 
 namespace Bank
 {
-    class BillingAccount
+    class BillingAccount : Account
     {
-        public string AccountNumber;
-        public decimal Balance;
-        public string FirstName;
-        public string LastName;
-        public long Pesel;
-
-        public BillingAccount(string accountNumber, decimal balance, string firstName, string lastName, long pesel)//konstruktor klasy BillingAccount
+        public BillingAccount(int id, string firstName, string lastName, long pesel)
+            : base(id, firstName, lastName, pesel)
+        // przekazanie wartości z klasy dziedziczącej do klasy bazowej za pomocą słówka "base",
+        // które reprezentuje konstruktor bazowy
         {
-            AccountNumber = accountNumber;
-            Balance = balance;
-            FirstName = firstName;
-            LastName = lastName;
-            Pesel = pesel;
-        }
-        public string GetFullName()
-        {
-            return string.Format($"{FirstName} {LastName}");
         }
 
-        public string GetBalance()
+        public override string TypeName()
         {
-            return string.Format($"Twoje saldo wynosi: {Balance}zł");
+            return "ROZLICZENIOWE";
         }
     }
 }
