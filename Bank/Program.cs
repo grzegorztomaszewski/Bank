@@ -6,11 +6,7 @@ namespace Bank
     {
         static void Main(string[] args)
         {
-            string name = "Nazwa: Bank";
-            string author = "Autor: Marek Zajac";
-            Console.WriteLine(name);
-            Console.WriteLine(author);
-            Console.WriteLine();
+
 
             SavingsAccount savingsAccount = new SavingsAccount(1, "Marek", "Zając", 92010133333);
             
@@ -21,7 +17,7 @@ namespace Bank
             string fullName = savingsAccount.GetFullName();
             Console.WriteLine($"Pierwsze konto oszczędnościowe w systemie dodał/a: {fullName}");
 
-            Printer printer = new Printer();
+            IPrinter printer = new Printer();
 
             printer.Print(savingsAccount);
             printer.Print(secondSavingsAccount);
@@ -30,6 +26,9 @@ namespace Bank
             Console.WriteLine($"Pierwsze konto rozliczeniowe w systemie dodał/a: {fullName2}");
 
             printer.Print(billingAccount);
+
+            IPrinter printer2 = new SmallerPrinter();
+            printer2.Print(savingsAccount);
              
             Console.ReadKey();
         }
