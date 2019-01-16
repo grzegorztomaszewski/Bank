@@ -51,5 +51,45 @@ namespace Bank
                 _accounts.Add(account);
             return account;
         }
+
+        public IEnumerable<Account> GetAllAccountsFor(string firstName, string lastName, long pesel)
+        {
+            return _accounts.Where(x => x.FirstName == firstName && x.LastName == lastName && x.Pesel == pesel);
+        }
+
+        public Account GetAccount(string accountNo)
+        {
+            return _accounts.Single(x => x.AccountNumber == accountNo);
+        }
+
+        public IEnumerable<string> ListOfCustomers()
+        {
+            return _accounts.Select(a => string.Format($"Imię: {a.FirstName} | Nazwisko: {a.LastName} | PESEL: {a.Pesel}")).Distinct();
+        }
+
+        public void CloseMonth()
+        {
+            foreach(SavingsAccount account in _accounts.Where(x => x is SavingsAccount))
+            {
+                account.AddInterest(0.04M);
+            }
+
+            foreach(BillingAccount account in _accounts.Where(x => x is BillingAccount))
+            {
+                account.TakeCharge(5.0M);
+            }
+        }
+
+        public void AddMoney(string accountNo, decimal value)
+        {
+            Account account = GetAccount(accountNo);
+            account.ChargeBalance(value);
+        }
+
+        public void TakeMoney(string accountNo, decimal value)
+        {
+            Account account = GetAccount(accountNo);
+            account.ChargeBalance(-value);
+        }
     }
 }
