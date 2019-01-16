@@ -15,6 +15,11 @@ namespace Bank
         {
         }
 
+        public void TakeCharge(decimal value)
+        {
+            Balance -= value;
+        }
+
         public override string TypeName()
         {
             return "ROZLICZENIOWE";
