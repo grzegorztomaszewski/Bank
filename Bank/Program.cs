@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Bank
 {
@@ -6,31 +7,19 @@ namespace Bank
     {
         static void Main(string[] args)
         {
-            string name = "Nazwa: Bank";
-            string author = "Autor: Marek Zajac";
-            Console.WriteLine(name);
-            Console.WriteLine(author);
-            Console.WriteLine();
+            AccountsManager manager = new AccountsManager();
 
-            SavingsAccount savingsAccount = new SavingsAccount(1, "Marek", "Zając", 92010133333);
-            
-            SavingsAccount secondSavingsAccount = new SavingsAccount(2,"Marek", "Zając", 92010133333);
+            manager.CreateBillingAccount("Marek", "Zajac", 1234567890);
+            manager.CreateSavingsAccount("Marek", "Zajac", 1234567890);
+            manager.CreateSavingsAccount("Aaaaa", "Bbbbb", 0987654321);
 
-            Account billingAccount = new BillingAccount(3, "Marek", "Zając", 92010133333);
-
-            string fullName = savingsAccount.GetFullName();
-            Console.WriteLine($"Pierwsze konto oszczędnościowe w systemie dodał/a: {fullName}");
+            IList<Account> accounts = (IList <Account>) manager.GetAllAccounts();
 
             Printer printer = new Printer();
 
-            printer.Print(savingsAccount);
-            printer.Print(secondSavingsAccount);
+            printer.Print(accounts[0]);
+            printer.Print(accounts[2]);
 
-            string fullName2 = billingAccount.GetFullName();
-            Console.WriteLine($"Pierwsze konto rozliczeniowe w systemie dodał/a: {fullName2}");
-
-            printer.Print(billingAccount);
-            
             Console.ReadKey();
         }
     }

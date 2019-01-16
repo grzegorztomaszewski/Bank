@@ -6,12 +6,12 @@ namespace Bank
 {
     abstract class Account
     {
-        public int Id;
-        public string AccountNumber;
-        public decimal Balance;
-        public string FirstName;
-        public string LastName;
-        public long Pesel;
+        public int Id { get; }
+        public string AccountNumber { get; }
+        public decimal Balance { get; }
+        public string FirstName { get; }
+        public string LastName { get; }
+        public long Pesel { get; }
 
         public Account(int id, string firstName, string lastName, long pesel)//konstruktor klasy SavingsAccount
         {
@@ -38,7 +38,7 @@ namespace Bank
         private string generateAccountNumber(int id)
         {
             var accountNumber =  string.Format("94{0:D10}", id);
-            return accountNumber;
+            return accountNumber; 
         }
-    }
+    } 
 }

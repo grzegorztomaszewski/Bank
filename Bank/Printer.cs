@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bank
 {
-    class Printer
+    class Printer : IPrinter
     {
         public void Print (Account account)
         {
@@ -16,6 +16,14 @@ namespace Bank
             Console.WriteLine($"Imię i nazwisko właściciela: {account.GetFullName()}");
             Console.WriteLine($"PESEL właściciela: {account.Pesel}");
             Console.WriteLine();
+        }
+    }
+    class SmallerPrinter : IPrinter
+    {
+        public void Print(Account account)
+        {
+            Console.WriteLine($"Dane konta: {account.AccountNumber}");
+            Console.WriteLine($"Imię i nazwisko właściciela: {account.GetFullName()}");
         }
     }
 }
